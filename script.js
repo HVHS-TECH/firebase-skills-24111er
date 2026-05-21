@@ -25,3 +25,32 @@ function helloWorld(){
     }
   )
 }
+
+function changeMessage() {
+  console.log("changing message")
+  firebase.database().ref('/message').set("Kia Ora")
+}
+
+function goodbye() {
+  console.log("Goodbye")
+  firebase.database().ref('/message').set('Ka kite ano')
+}
+
+function readMessage() {
+  console.log("Reading Message")
+  firebase.database().ref('/message').once('value', showMessage)
+}
+
+function showMessage(snapshot) {
+  var dbData = snapshot.val();
+  if (dbData == null) {
+    console.log("There was no record of the data you were trying to find")
+  } else {
+    console.log("Running showMessage(). The message is " + snapshot.val())
+  }
+  // HTML_OUTPUT.innerHTML = snapshot.val();
+}
+
+function safeRead() {
+  console.log
+}
