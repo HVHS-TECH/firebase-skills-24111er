@@ -6,3 +6,9 @@
  **                                                          **
  **************************************************************
  **************************************************************/
+
+function readError(error) {
+    console.log("An error has occured reading the message")
+    console.log(error)
+}
+
