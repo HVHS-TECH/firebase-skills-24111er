@@ -132,12 +132,46 @@ function readTable() {
 // }
 
 function displayTable(snapshot) {
+  HTML_OUTPUT.innerHTML = "";
   snapshot.forEach(showScoresAll)
   
 }
 
 function showScoresAll(child) {
-  console.log(userNames + child.val())
+  var userNames = child.key;
+  var userScores = child.val();
+  console.log(userNames + " : " + child.val())
+  HTML_OUTPUT.innerHTML += "<p>" + userNames + " : " + userScores + "</p>";
 }
+
+function sortTableByName() {
+  console.log("sorting table by name")
+  firebase.database().ref('/High Scores/users').orderByKey().once('value', displayTable, readError)
+ 
+
+}
+
+function sortTableByScore() {
+  console.log("sorting table by score")
+  firebase.database().ref('/High Scores/users').orderByValue().once('value', showTableByScore, readError)
+
+
+}
+
+function showTableByScore(snapshot) {
+  console.log("showing table by score")
+  var scores = snapshot.val();
+  var usersScores = scores.reverse();
+
+}
+
+function displayTableByScore() {
+  var scores = snapshot.val();
+  var usersScores = scores.reverse();
+
+}
+
+
+
 
 
