@@ -27,6 +27,8 @@ scoreTable = {
   }
 }
 
+var scoresArray = [];
+
 function helloWorld(){
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
@@ -159,15 +161,25 @@ function sortTableByScore() {
 }
 
 function showTableByScore(snapshot) {
-  console.log("showing table by score")
-  var scores = snapshot.val();
-  var usersScores = scores.reverse();
+  snapshot.forEach(displayTableByScore)
 
 }
 
-function displayTableByScore() {
-  var scores = snapshot.val();
-  var usersScores = scores.reverse();
+function displayTableByScore(child) {
+  console.log("showing table by score")
+  var scoresInitial = child.val();
+  var scoreNames = child.key;
+  scoresArray.push(scoreNames + " : " + scoresInitial)
+  if (scoresInitial == 305) {
+    scoresArray.reverse();
+    console.log(scoresArray)
+    HTML_OUTPUT.innerHTML = "";
+    for (i=0; i < scoresArray.length; i++) {
+      HTML_OUTPUT.innerHTML += "<p>" + scoresArray[i] + "</p>";
+    }
+    scoresArray = [];
+  }
+  
 
 }
 
