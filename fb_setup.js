@@ -7,7 +7,7 @@
 // Input:  n/a
 // Return: n/a
 /**************************************************************/
-  const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAoBYKxTbO67RXBoFDg1nRWLFdObojIQNo",
   authDomain: "emme-rodwell-12comp.firebaseapp.com",
   databaseURL: "https://emme-rodwell-12comp-default-rtdb.asia-southeast1.firebasedatabase.app",

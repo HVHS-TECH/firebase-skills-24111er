@@ -19,6 +19,7 @@ const HTML_OUTPUT = document.getElementById("databaseOutput");
 /**************************************************************/
 var scoreTable;
 
+
 scoreTable = {
   users: {
     Geoff: 103,
@@ -28,6 +29,7 @@ scoreTable = {
 }
 
 var scoresArray = [];
+
 
 function helloWorld(){
   console.log("Running helloWorld()")
@@ -182,6 +184,22 @@ function displayTableByScore(child) {
   
 
 }
+
+function loggingOut() {
+  logOut();
+}
+
+async function readHighestScore() {
+  var snapshot = await firebase.database().ref('/googleUsers/cR7OEs9EcDS32Amso0eZzSCioqt2/DisplayName').once('value');
+  var userName = snapshot.val();
+  console.log("name is " + userName)
+  snapshot = await firebase.database().ref('/High Scores/users/' + '"' + userName + '"').once('value')
+  var score = snapshot.val();
+  console.log("the score is " + score)
+
+
+}
+
 
 
 
